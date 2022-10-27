@@ -1,8 +1,21 @@
-drawChart("#pie-chart", ["Open", "Closed"], [331, 266]);
-drawChart("#pie-chart2", ["Open", "Closed"], [110, 490]);
-drawChart("#pie-chart3", ["Open", "Closed"], [95, 150]);
 
-function drawChart(id, _labels, _data) {
+var OpenRequests = {
+  categories:["Production", "HVAC", "QA", "Civil"],
+  colors:["#303840", "red","Gray", "green"],
+  values:[331, 266, 331, 400]
+}
+
+var Admin = {
+  categories:["Open", "Closed"],
+  colors:["#303840", "red"],
+  values:[425, 234]
+}
+
+drawChart("#pie-chart", OpenRequests.categories,OpenRequests.colors, OpenRequests.values);
+drawChart("#pie-chart2",Admin.categories, Admin.colors, Admin.values);
+drawChart("#pie-chart3", ["Open", "Closed"],["#eb1d24", "#303840"], [95, 150]);
+
+function drawChart(id, _labels, _colors, _data) {
   const ctx = document.querySelector(id);
   const labels = _labels;
 
@@ -12,7 +25,7 @@ function drawChart(id, _labels, _data) {
       {
         data: _data,
         label: "Favourite Colour",
-        backgroundColor: ["#eb1d24", "#303840"],
+        backgroundColor: _colors,
         hoverOffset: 15,
       },
     ],
